@@ -1,0 +1,114 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>My Clock</title>
+<script>
+  function updateTime() { // Update the clock time
+    var now = new Date();
+    var sec = now.getSeconds();
+    var min = now.getMinutes();
+    var hour = (now.getHours() % 12) + min/60;
+    var secAngle = sec*6;
+    var minAngle = min*6;
+    var hourAngle = hour*30;
+ 
+    // Get SVG elements for the clock hands
+    var secHand = document.getElementById("secondHand");
+    var minHand = document.getElementById("minuteHand");
+    var hourHand = document.getElementById("hourHand");
+ 
+    // Set an SVG attribute on them to move them around the clock face
+    secHand.setAttribute("transform", "rotate(" + secAngle + ",50,50)");
+    minHand.setAttribute("transform", "rotate(" + minAngle + ",50,50)");
+    hourHand.setAttribute("transform", "rotate(" + hourAngle + ",50,50)");
+ 
+    setTimeout(updateTime, 1000);
+    }
+</script>
+<style>
+    /* This is the CSS for the individual parts of the clock */
+    #clockH { stroke: #B20000; fill: #E3A3A3; }
+    #clockM { stroke: #000000; fill: #000000; }
+    #clockS { stroke: #B20000; fill: #E3A3A3; }
+
+    #face { stroke-width: 4px;}
+    #markers { stroke-width: 1px; }
+    #hourHand { stroke-width: 3px; stroke-linecap: round; }
+    #minuteHand { stroke-width: 2px; stroke-linecap: round; }
+    #secondHand { stroke-width: 1px; }
+</style>
+</head>
+<body onload="updateTime()">
+    <!-- viewBox is coordinate system, width and height are on-screen size -->
+    <!-- This is the far left clock which controls the hourHand -->
+<svg id="clockH" viewBox="0 0 100 100" width="33%" height="100%">
+ 
+<g id="markers">
+  <line x1='50' y1='5.000' x2='50.00' y2='10.00'/>
+  <line x1='72.50' y1='11.03' x2='70.00' y2='15.36'/>
+  <line x1='88.97' y1='27.50' x2='84.64' y2='30.00'/>
+  <line x1='95.00' y1='50.00' x2='90.00' y2='50.00'/>
+  <line x1='88.97' y1='72.50' x2='84.64' y2='70.00'/>
+  <line x1='72.50' y1='88.97' x2='70.00' y2='84.64'/>
+  <line x1='50.00' y1='95.00' x2='50.00' y2='90.00'/>
+  <line x1='27.50' y1='88.97' x2='30.00' y2='84.64'/>
+  <line x1='11.03' y1='72.50' x2='15.36' y2='70.00'/>
+  <line x1='5.000' y1='50.00' x2='10.00' y2='50.00'/>
+  <line x1='11.03' y1='27.50' x2='15.36' y2='30.00'/>
+  <line x1='27.50' y1='11.03' x2='30.00' y2='15.36'/>
+</g>
+
+<g id="clockHands"> 
+  <line id="hourHand" x1="50" y1="50" x2="50" y2="25"/>
+</g>
+</svg>
+
+  <!-- This is the center clock which controls the minuteHand -->
+<svg id="clockM" viewBox="0 0 100 100" width="33%" height="100%">
+ 
+<g id="markers">
+  <line x1='50' y1='5.000' x2='50.00' y2='10.00'/>
+  <line x1='72.50' y1='11.03' x2='70.00' y2='15.36'/>
+  <line x1='88.97' y1='27.50' x2='84.64' y2='30.00'/>
+  <line x1='95.00' y1='50.00' x2='90.00' y2='50.00'/>
+  <line x1='88.97' y1='72.50' x2='84.64' y2='70.00'/>
+  <line x1='72.50' y1='88.97' x2='70.00' y2='84.64'/>
+  <line x1='50.00' y1='95.00' x2='50.00' y2='90.00'/>
+  <line x1='27.50' y1='88.97' x2='30.00' y2='84.64'/>
+  <line x1='11.03' y1='72.50' x2='15.36' y2='70.00'/>
+  <line x1='5.000' y1='50.00' x2='10.00' y2='50.00'/>
+  <line x1='11.03' y1='27.50' x2='15.36' y2='30.00'/>
+  <line x1='27.50' y1='11.03' x2='30.00' y2='15.36'/>
+</g>
+
+<g id="clockHands"> 
+  
+  <line id="minuteHand" x1="50" y1="50" x2="50" y2="17"/>
+</g>
+</svg>
+
+  <!-- This is the far right clock which controls the secondHand -->
+<svg id="clockS" viewBox="0 0 100 100" width="33%" height="100%">
+ 
+<g id="markers">
+  <line x1='50' y1='5.000' x2='50.00' y2='10.00'/>
+  <line x1='72.50' y1='11.03' x2='70.00' y2='15.36'/>
+  <line x1='88.97' y1='27.50' x2='84.64' y2='30.00'/>
+  <line x1='95.00' y1='50.00' x2='90.00' y2='50.00'/>
+  <line x1='88.97' y1='72.50' x2='84.64' y2='70.00'/>
+  <line x1='72.50' y1='88.97' x2='70.00' y2='84.64'/>
+  <line x1='50.00' y1='95.00' x2='50.00' y2='90.00'/>
+  <line x1='27.50' y1='88.97' x2='30.00' y2='84.64'/>
+  <line x1='11.03' y1='72.50' x2='15.36' y2='70.00'/>
+  <line x1='5.000' y1='50.00' x2='10.00' y2='50.00'/>
+  <line x1='11.03' y1='27.50' x2='15.36' y2='30.00'/>
+  <line x1='27.50' y1='11.03' x2='30.00' y2='15.36'/>
+</g>
+
+<g id="clockHands"> 
+  <line id="secondHand" x1="50" y1="50" x2="50" y2="15"/>
+</g>
+</svg>
+</body>
+</html>
